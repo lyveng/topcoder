@@ -1,3 +1,5 @@
+package srm222.round1.division1.level2;
+
 import org.junit.Assert;
 import org.junit.Test;
 
