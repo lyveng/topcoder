@@ -6,9 +6,6 @@ package srm233.round1.division1.level2; /**
  * To change this template use File | Settings | File Templates.
  */
 import java.util.*;
-import java.util.regex.*;
-import java.text.*;
-import java.math.*;
 
 public class SmartWordToy
 {
