@@ -1,18 +1,43 @@
-package srm233.round1.division1.level2; /**
- * Created with IntelliJ IDEA.
- * User: emmanuel
- * Date: 10/8/13
- * Time: 1:20 AM
- * To change this template use File | Settings | File Templates.
- */
+package srm233.round1.division1.level2;
+
 import java.util.*;
 
+/**
+ * The toy company "I Can't Believe It Works!" has hired you to help develop educational toys. The
+ * current project is a word toy that displays four letters at all times. Below each letter are two
+ * buttons that cause the letter above to change to the previous or next letter in alphabetical
+ * order. So, with one click of a button the letter 'c' can be changed to a 'b' or a 'd'. The
+ * alphabet is circular, so for example an 'a' can become a 'z' or a 'b' with one click. In order to
+ * test the toy, you would like to know if a word can be reached from some starting word, given one
+ * or more constraints. A constraint defines a set of forbidden words that can never be displayed by
+ * the toy. Each constraint is formatted like "X X X X", where each X is a string of lowercase
+ * letters. A word is defined by a constraint if the ith letter of the word is contained in the ith
+ * X of the contraint. For example, the constraint "lf a tc e" defines the words "late", "fate",
+ * "lace" and "face". You will be given a String start, a String finish, and a String[] forbid.
+ * Calculate and return the minimum number of button presses required for the toy to show the word
+ * finish if the toy was originally showing the word start. Remember, the toy must never show a
+ * forbidden word. If it is impossible for the toy to ever show the desired word, return -1.
+ * 
+ * @author emmanuel
+ * 
+ */
 public class SmartWordToy
 {
     private static final int ASCII_VALUE_OF_A = (int) 'a';
 
     private static final StringBuilder sb = new StringBuilder();
 
+  /**
+   * Each constraint is formatted like "X X X X", where each X is a string of lowercase letters. A
+   * word is defined by a constraint if the ith letter of the word is contained in the ith X of the
+   * contraint. For example, the constraint "lf a tc e" defines the words "late", "fate", "lace" and
+   * "face"
+   * 
+   * All possible constraints are generated and added to the given set.
+   * 
+   * @param constraint
+   * @param constraints
+   */
     private void addConstraint(String constraint, Set<String> constraints)
     {
         String[] split = constraint.split(" ");
@@ -32,6 +57,14 @@ public class SmartWordToy
         }
     }
 
+    /**
+     * Fetches the next word formed by changing the character at given index in the specified direction.
+     * 
+     * @param cur_node
+     * @param index
+     * @param direction
+     * @return
+     */
     public static String getNextNode(String cur_node, int index, int direction)
     {
         int asciiOfCharToReplace = ((int) cur_node.charAt(index)) - ASCII_VALUE_OF_A + direction;
@@ -43,10 +76,22 @@ public class SmartWordToy
         char newChar = (char) (ASCII_VALUE_OF_A + asciiOfCharToReplace);
         sb.delete(0, sb.length());
         sb.append(cur_node);
-        sb.replace(index, index+1, new String(new char[] {newChar}));
+        sb.setCharAt(index, newChar);
         return sb.toString();
     }
 
+  /**
+   * Consider the different possible words as nodes of a graph and every button press as an edge.
+   * Now find the shortest path from start to finish while not visiting the elements in the
+   * constraints set.
+   * 
+   * This problem uses BreadthFirst Search of Undirected Graphs.
+   * 
+   * @param start
+   * @param finish
+   * @param forbid
+   * @return
+   */
     public int minPresses(String start, String finish, String[] forbid)
     {
         if (start.equals(finish))
