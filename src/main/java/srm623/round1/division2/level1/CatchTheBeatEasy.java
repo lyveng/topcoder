@@ -1,4 +1,4 @@
-package main.java.srm623.round1.division2.level1;
+package srm623.round1.division2.level1;
 
 /**
  * One of the modes in the game "osu!" is called "catch the beat". In this mode, you control a character that catches
