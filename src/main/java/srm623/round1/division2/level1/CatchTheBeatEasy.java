@@ -15,7 +15,6 @@ package srm623.round1.division2.level1;
 public class CatchTheBeatEasy {
     public String ableToCatchAll(int[] x, int[] y) {
         int prevX = 0, prevY = 0;
-        boolean ableToCatch = true;
         for (int i=0;i<x.length;i++) {
             if (Math.abs(x[i] - prevX) <= Math.abs(y[i] - prevY))
             {
@@ -26,6 +25,15 @@ public class CatchTheBeatEasy {
                 return "Not able to catch";
         }
         return "Able to catch";
+    }
+
+    public static void main(String[] args)
+    {
+      CatchTheBeatEasy obj = new CatchTheBeatEasy();
+      System.out.println(obj.ableToCatchAll(new int[] {-1,1,0}, new int[] {1,3,4}));
+      System.out.println(obj.ableToCatchAll(new int[] {-3}, new int[] {2}));
+      System.out.println(obj.ableToCatchAll(new int[] {-1,1,0}, new int[] {1,2,4}));
+      System.out.println(obj.ableToCatchAll(new int[] {0,-1,1}, new int[] {9,1,3}));
     }
 }
 //Powered by KawigiEdit 2.1.4 (beta) modified by pivanof!
