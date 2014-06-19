@@ -24,6 +24,8 @@ public class GeneralChess {
     for (String piece : pieces) {
       split = piece.split(",");
       ret.retainAll(generateAttackPositions(new Position(Integer.parseInt(split[0]), Integer.parseInt(split[1])), attackMoves));
+      if (ret.isEmpty())
+        break;
     }
     return generateReturnValue(ret);
   }
