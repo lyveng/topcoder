@@ -1,4 +1,4 @@
-package srm621.round1.division2.level1;
+package srm621.division2;
 
 /**
  * Sasha has a String[] stringList. No two elements of stringList have the same length.

@@ -1,4 +1,4 @@
-package srm622.round1.division2.level1;
+package srm622.division2;
 
 public class FibonacciDiv2 {
   public int find(int N) {

@@ -1,4 +1,4 @@
-package srm623.round1.division2.level2;
+package srm623.division2;
 
 public class CatAndRat {
   public double getTime(int R, int T, int Vrat, int Vcat) {

@@ -1,4 +1,4 @@
-package srm624.round1.division2;
+package srm624.division2;
 
 import java.util.Arrays;
 
