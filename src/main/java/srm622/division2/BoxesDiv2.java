@@ -1,4 +1,4 @@
-package srm622.round1.division2.level2;
+package srm622.division2;
 
 import java.util.PriorityQueue;
 
