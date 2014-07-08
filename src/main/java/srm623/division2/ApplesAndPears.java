@@ -20,23 +20,21 @@ public class ApplesAndPears {
     }
     int maxRectSize = 1, pCount = p[board.length][board.length], aCount = a[board.length][board.length];
     int eCount = e[board.length][board.length], curPCount, curACount, curECount, rectSize, moves;
-    for (int x0 = 1; x0 <= board.length; x0++) {
-      for (int y0 = 1; y0 <= board.length; y0++) {
-        for (int x1 = x0; x1 <= board.length; x1++) {
-          for (int y1 = y0; y1 <= board.length; y1++) {
-            rectSize = (x1 - x0 + 1) * (y1 - y0 + 1);
+    for (int x0 = 0; x0 < board.length; x0++) {
+      for (int y0 = 0; y0 < board.length; y0++) {
+        for (int x1 = x0+1; x1 <= board.length; x1++) {
+          for (int y1 = y0+1; y1 <= board.length; y1++) {
+            rectSize = (x1 - x0) * (y1 - y0);
             if (rectSize <= maxRectSize)
               continue;
-            curPCount = 0;
-            curACount = 0;
-            curECount = 0;
-            curPCount = p[x1][y1] - p[x0-1][y1] - p[x1][y0-1] + p[x0-1][y0-1];
-            curACount = a[x1][y1] - a[x0-1][y1] - a[x1][y0-1] + a[x0-1][y0-1];
-            curECount = e[x1][y1] - e[x0-1][y1] - e[x1][y0-1] + e[x0-1][y0-1];
+            curPCount = p[x1][y1] - p[x0][y1] - p[x1][y0] + p[x0][y0];
+            curACount = a[x1][y1] - a[x0][y1] - a[x1][y0] + a[x0][y0];
+            curECount = e[x1][y1] - e[x0][y1] - e[x1][y0] + e[x0][y0];
 
             // Check if pears can be filled.
             moves = 0;
             if (rectSize <= pCount) {
+              // fill empty spaces inside the selected rectangle with pears
               moves += (curECount);
               if (curACount > 0) {
                 if (eCount > 0) {
@@ -57,7 +55,7 @@ public class ApplesAndPears {
             if (rectSize <= aCount) {
               moves += (curECount);
               if (curPCount > 0) {
-                if (eCount - curECount > 0) {
+                if (eCount > 0) {
                   moves += (2 * curPCount);
                   if (moves <= K && rectSize > maxRectSize) {
                     maxRectSize = rectSize;
