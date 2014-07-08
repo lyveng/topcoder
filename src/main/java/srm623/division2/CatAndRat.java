@@ -4,10 +4,9 @@ public class CatAndRat {
   public double getTime(int R, int T, int Vrat, int Vcat) {
     if (Vrat >= Vcat)
       return -1.0;
-    double d = Math.PI * Math.pow(R, 2);
-    if ((T*Vrat) < d)
-      d = T*Vrat;
-    return ((double)d) / (Vcat - Vrat);
+    double maxDistFromCat = Math.PI * R;
+    double distFromCat = Math.min(maxDistFromCat, Vrat*T);
+    return distFromCat / (Vcat - Vrat);
   }
 
   public static void main(String[] args) {
