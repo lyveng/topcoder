@@ -23,121 +23,63 @@ import java.util.*;
  */
 public class SmartWordToy
 {
-    private static final int ASCII_VALUE_OF_A = (int) 'a';
+  private int base_a = (int) 'a';
 
-    private static final StringBuilder sb = new StringBuilder();
+  private int encode(char[] s) {
+    return s[0] - base_a + ((s[1] - base_a) << 5) + ((s[2] - base_a) << 10) + ((s[3] - base_a) << 15);
+  }
 
-  /**
-   * Each constraint is formatted like "X X X X", where each X is a string of lowercase letters. A
-   * word is defined by a constraint if the ith letter of the word is contained in the ith X of the
-   * contraint. For example, the constraint "lf a tc e" defines the words "late", "fate", "lace" and
-   * "face"
-   * 
-   * All possible constraints are generated and added to the given set.
-   * 
-   * @param constraint
-   * @param constraints
-   */
-    private void addConstraint(String constraint, Set<String> constraints)
-    {
-        String[] split = constraint.split(" ");
-        String a = split[0], b = split[1], c = split[2], d = split[3];
-        for (char a_c : a.toCharArray())
-        {
-            for (char b_c : b.toCharArray())
-            {
-                for (char c_c : c.toCharArray())
-                {
-                    for (char d_c : d.toCharArray())
-                    {
-                        constraints.add(new String(new char[] {a_c, b_c, c_c, d_c}));
-                    }
-                }
+  private boolean[] getForbidEncoded(String[] forbid) {
+    boolean[] forbidArr = new boolean[1 << 20];
+    for (String forbidStr : forbid) {
+      String[] forbidStrSplit = forbidStr.split(" ");
+      for (char a : forbidStrSplit[0].toCharArray()) {
+        for (char b : forbidStrSplit[1].toCharArray()) {
+          for (char c : forbidStrSplit[2].toCharArray()) {
+            for (char d : forbidStrSplit[3].toCharArray()) {
+              forbidArr[encode(new char[] {a, b, c, d})] = true;
             }
+          }
         }
+      }
     }
+    return forbidArr;
+  }
 
-    /**
-     * Fetches the next word formed by changing the character at given index in the specified direction.
-     * 
-     * @param cur_node
-     * @param index
-     * @param direction
-     * @return
-     */
-    public static String getNextNode(String cur_node, int index, int direction)
-    {
-        int asciiOfCharToReplace = ((int) cur_node.charAt(index)) - ASCII_VALUE_OF_A + direction;
-        if (asciiOfCharToReplace == 26)
-            asciiOfCharToReplace = 0;
-        else if (asciiOfCharToReplace == -1)
-            asciiOfCharToReplace = 25;
-
-        char newChar = (char) (ASCII_VALUE_OF_A + asciiOfCharToReplace);
-        sb.delete(0, sb.length());
-        sb.append(cur_node);
-        sb.setCharAt(index, newChar);
-        return sb.toString();
-    }
-
-  /**
-   * Consider the different possible words as nodes of a graph and every button press as an edge.
-   * Now find the shortest path from start to finish while not visiting the elements in the
-   * constraints set.
-   * 
-   * This problem uses BreadthFirst Search of Undirected Graphs.
-   * 
-   * @param start
-   * @param finish
-   * @param forbid
-   * @return
-   */
-    public int minPresses(String start, String finish, String[] forbid)
-    {
-        if (start.equals(finish))
-            return 0;
-        Set<String> constraints = new LinkedHashSet<String>();
-        Set<String> visited = new LinkedHashSet<String>();
-        for (String constraint : forbid)
-        {
-            addConstraint(constraint, constraints);
+  public int minPresses(String start, String finish, String[] forbid) {
+    boolean[] visitedArr = getForbidEncoded(forbid);
+    int[] minDist = new int[1 << 20];
+    char[] startArr = start.toCharArray(), finishArr = finish.toCharArray(), nextArr, curArr;
+    int[] move_index = {0, 0, 1, 1, 2, 2, 3, 3};
+    int[] move_delta = {1, -1, 1, -1, 1, -1, 1, -1};
+    int curEnc, finishEnc=encode(finishArr), nextEnc;
+    if (encode(startArr) == finishEnc)
+      return 0;
+    LinkedList<char[]> q = new LinkedList<>();
+    q.add(startArr);
+    visitedArr[encode(startArr)] = true;
+    while (!q.isEmpty()) {
+      curArr = q.remove();
+      curEnc = encode(curArr);
+      for (int i = 0; i < move_index.length; i++) {
+        nextArr = curArr.clone();
+        if (move_delta[i] == 1 && nextArr[move_index[i]] == 'z')
+          nextArr[move_index[i]] = 'a';
+        else if (move_delta[i] == -1 && nextArr[move_index[i]] == 'a')
+          nextArr[move_index[i]] = 'z';
+        else
+          nextArr[move_index[i]] += move_delta[i];
+        nextEnc = encode(nextArr);
+        if (!visitedArr[nextEnc]) {
+          if (nextEnc == finishEnc)
+            return 1 + minDist[curEnc];
+          minDist[nextEnc] = minDist[curEnc] + 1;
+          visitedArr[nextEnc] = true;
+          q.add(nextArr);
         }
-        if (constraints.contains(finish))
-            return -1;
-        Queue<QueueElement> toVisit = new LinkedList<QueueElement>();
-        toVisit.add(new QueueElement(0, start));
-        visited.add(start);
-        int[] directions = new int[] {1,-1};
-        while (!toVisit.isEmpty())
-        {
-            QueueElement cur_node = toVisit.remove();
-            for (int i=0;i<4;i++)
-            {
-                for (int direction : directions)
-                {
-                    String next_node = getNextNode(cur_node.node, i, direction);
-                    if (!constraints.contains(next_node) && !visited.contains(next_node))
-                    {
-                        visited.add(next_node);
-                        toVisit.add(new QueueElement(cur_node.distance+1, next_node));
-                        if (finish.equals(next_node))
-                            return cur_node.distance + 1;
-                    }
-                }
-            }
-        }
-        return -1;
+      }
     }
-
-    class QueueElement
-    {
-        String node;
-        int distance;
-
-        QueueElement(int distance, String node) {
-            this.distance = distance;
-            this.node = node;
-        }
-    }
+    return -1;
+  }
 
 }
