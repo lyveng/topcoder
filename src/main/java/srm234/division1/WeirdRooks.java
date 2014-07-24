@@ -1,107 +1,66 @@
 package srm234.division1;
-
 import java.util.TreeSet;
 
-
-/**
- * Level 2 Problem.
- * 
- * @author emmanuel
- * 
- */
 public class WeirdRooks {
+  private TreeSet<Pair> pairs;
+
   public String describe(int[] cols) {
-    StringBuilder d = new StringBuilder();
-    TreeSet<Pair> set = new TreeSet<WeirdRooks.Pair>();
-    int maxCol = cols[0], totalSquares = cols[0];
-    for (int i = 1; i < cols.length; i++) {
-      if (cols[i] > maxCol)
-        maxCol = cols[i];
-      totalSquares += cols[i];
-    }
-
-    boolean[][] board = new boolean[cols.length][maxCol];
-    for (int rooks = 0; rooks <= totalSquares; rooks++) {
-      describeUtil(cols, 0, 0, board, rooks, totalSquares, set, rooks);
-    }
-    for (Pair p : set)
-      d.append(String.format("%d,%d ", p.r, p.f));
-    if (d.length() > 0)
-      d.deleteCharAt(d.length()-1);
-    return d.toString();
+    pairs = new TreeSet<>();
+    boolean[] markedCols = new boolean[cols[cols.length-1]];
+    describeUtil(cols, 0, 0, cols.length-1, markedCols);
+    return getPairs();
   }
 
-  private void describeUtil(int[] cols, int row, int col, boolean[][] board, int remainingRookCount, int remainingSquares, TreeSet<Pair> set,
-      int totalRookCount) {
-    int nextRow = row, nextCol = col + 1;
-    if (nextCol == cols[row]) {
-      nextRow++;
-      nextCol = 0;
+  private String getPairs() {
+    StringBuilder sb = new StringBuilder();
+    for (Pair p : pairs) {
+      sb.append(p.r);
+      sb.append(",");
+      sb.append(p.f);
+      sb.append(" ");
     }
+    sb.deleteCharAt(sb.length()-1);
+    return sb.toString();
+  }
 
-    if (remainingRookCount == 0) {
-      set.add(new Pair(totalRookCount, getSpecialSquares(cols, board)));
+  private void describeUtil(int[] cols, int rookCount, int specialSquares, int curRow, boolean[] markedCols) {
+    if (curRow == -1) {
+      pairs.add(new Pair(rookCount, specialSquares));
       return;
     }
+    // don't place a rook on the current row.
+    int curRowSpecialSquareCount = 0;
+    for (int i = 0; i < cols[curRow]; i++) {
+      if (!markedCols[i])
+        curRowSpecialSquareCount++;
+    }
+    describeUtil(cols, rookCount, specialSquares+curRowSpecialSquareCount, curRow-1, markedCols);
 
-    if (nextRow >= cols.length) {
-      if (remainingRookCount == 1 && isSafe(cols, row, col, board)) {
-        board[row][col] = true;
-        set.add(new Pair(totalRookCount, getSpecialSquares(cols, board)));
-        board[row][col] = false;
+    // place a rook on the current row.
+    for (int i = 0; i < cols[curRow]; i++) {
+      if (markedCols[i])
+        continue;
+      markedCols[i] = true;
+      curRowSpecialSquareCount = 0;
+      for (int j = i+1; j < cols[curRow]; j++) {
+        if (!markedCols[j])
+          curRowSpecialSquareCount++;
       }
-      return;
-    }
-
-    if (remainingRookCount > remainingSquares)
-      return;
-
-    // Don't place a rook at row, col
-    describeUtil(cols, nextRow, nextCol, board, remainingRookCount, remainingSquares - 1, set, totalRookCount);
-
-    // Place a rook at row, col
-    if (isSafe(cols, row, col, board)) {
-      board[row][col] = true;
-      describeUtil(cols, nextRow, nextCol, board, remainingRookCount - 1, remainingSquares - 1, set, totalRookCount);
-      board[row][col] = false;
+      describeUtil(cols, rookCount+1, specialSquares+curRowSpecialSquareCount, curRow-1, markedCols);
+      markedCols[i] = false;
     }
   }
 
-  private boolean isSafe(int[] cols, int row, int col, boolean[][] board) {
-    for (int i = 0; i < board[0].length; i++)
-      if (board[row][i])
-        return false;
-    for (int i = 0; i < board.length; i++)
-      if (board[i][col])
-        return false;
-    return true;
-  }
-
-  private int getSpecialSquares(int[] cols, boolean[][] board) {
-    int count = 0;
-    for (int row = 0; row < cols.length; row++) {
-      for (int col = cols[row] - 1; col >= 0; col--) {
-        if (isSpecial(board, row, col))
-          count++;
-        if (board[row][col])
-          break;
-      }
-    }
-    return count;
-  }
-
-  private boolean isSpecial(boolean[][] board, int row, int col) {
-    for (int i = col; i < board[0].length; i++)
-      if (board[row][i])
-        return false;
-    for (int i = row; i < board.length; i++)
-      if (board[i][col])
-        return false;
-    return true;
-  }
-
-  private static class Pair implements Comparable<Pair>{
+  class Pair implements Comparable<Pair>{
     Integer r, f;
+
+    @Override
+    public int compareTo(Pair o) {
+      int rComp = r.compareTo(o.r);
+      if (rComp != 0)
+        return rComp;
+      return f.compareTo(o.f);
+    }
 
     public Pair(Integer r, Integer f) {
       super();
@@ -110,49 +69,8 @@ public class WeirdRooks {
     }
 
     @Override
-    public int compareTo(Pair o) {
-      if (r.compareTo(o.r) != 0)
-        return r.compareTo(o.r);
-      if (f.compareTo(o.f) != 0)
-        return f.compareTo(o.f);
-      return 0;
-    }
-
-    @Override
-    public int hashCode() {
-      final int prime = 31;
-      int result = 1;
-      result = prime * result + ((f == null) ? 0 : f.hashCode());
-      result = prime * result + ((r == null) ? 0 : r.hashCode());
-      return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-      if (this == obj)
-        return true;
-      if (obj == null)
-        return false;
-      if (getClass() != obj.getClass())
-        return false;
-      Pair other = (Pair) obj;
-      if (f == null) {
-        if (other.f != null)
-          return false;
-      } else if (!f.equals(other.f))
-        return false;
-      if (r == null) {
-        if (other.r != null)
-          return false;
-      } else if (!r.equals(other.r))
-        return false;
-      return true;
+    public String toString() {
+      return "Pair [r=" + r + ", f=" + f + "]";
     }
   }
-
-  public static void main(String[] args) {
-    WeirdRooks obj = new WeirdRooks();
-    System.out.println(obj.describe(new int[] {3, 3, 3}));
-  }
-
 }
