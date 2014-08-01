@@ -1,4 +1,4 @@
-package tccc03.round3;
+package tccc03.semifinals3;
 
 /**
  * Level 1 problem.

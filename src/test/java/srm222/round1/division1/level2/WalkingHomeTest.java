@@ -3,6 +3,8 @@ package srm222.round1.division1.level2;
 import org.junit.Assert;
 import org.junit.Test;
 
+import srm222.division1.WalkingHome;
+
 /**
  * Created with IntelliJ IDEA.
  * User: emmanuel

@@ -1,4 +1,4 @@
-package srm223.round1.divsion1.level3;
+package srm223.divsion1;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package srm207.round1.division2.level3;
+package srm207.division2;
 
 import java.util.LinkedList;
 import java.util.Queue;

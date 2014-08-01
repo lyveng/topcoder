@@ -1,4 +1,4 @@
-package srm219.round1.division1.level2;
+package srm219.division1;
 
 import java.util.*;
 

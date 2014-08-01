@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import srm223.divsion1.RevolvingDoors;
+
 /**
  * Created with IntelliJ IDEA.
  * User: emmanuel
