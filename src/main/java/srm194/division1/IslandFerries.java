@@ -13,7 +13,7 @@ import java.util.Set;
  *
  */
 public class IslandFerries {
-  private static final int MAX_STATES = 7040;
+  private static final int MAX_STATES = 7040; // 40 + 40*40c1 + 40*40c2 + 40*40c3
   private static final int MAX_TICKETS = 3;
 
   private Map<Node, Integer> map;
