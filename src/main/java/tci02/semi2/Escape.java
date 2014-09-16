@@ -1,5 +1,4 @@
 package tci02.semi2;
-import java.util.Arrays;
 import java.util.LinkedList;
 
 public class Escape {

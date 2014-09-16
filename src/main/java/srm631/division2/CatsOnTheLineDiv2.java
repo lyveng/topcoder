@@ -16,7 +16,7 @@ public class CatsOnTheLineDiv2 {
     }
     Arrays.sort(entries);
 
-    int prevLeft = -2000, prevRight = -2001, left, right;
+    int prevRight = -2001, left, right;
     for (int i = 0; i < entries.length; i++) {
       Entry entry = entries[i];
       if (entry.count > 2 * time + 1)
