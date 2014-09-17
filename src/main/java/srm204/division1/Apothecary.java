@@ -13,20 +13,31 @@ public class Apothecary {
 
   public int[] balance(int W) {
     List<Integer> l = new ArrayList<>();
-    int i = 0;
+    int i = 1, c = 0;
     while (W > 0) {
       if (W % 3 == 1) {
-        l.add((int)Math.pow(3, i));
-        W = W / 3;
+        if (c == 1)
+          l.add(-i);
+        else
+          l.add(i);
       }
       else if (W % 3 == 2) {
-        l.add(-(int)Math.pow(3, i));
-        W = (W+1) / 3;
+        if (c == 0) {
+          l.add(-i);
+          c = 1;
+        }
       }
-      else
-        W = W / 3;
-      i++;
+      else {
+        if (c == 1) {
+          l.add(i);
+          c = 0;
+        }
+      }
+      W = W / 3;
+      i*=3;
     }
+    if (c == 1)
+      l.add(i);
     Collections.sort(l);
     int[] ret = new int[l.size()];
     for (int j = 0; j < ret.length; j++) {
