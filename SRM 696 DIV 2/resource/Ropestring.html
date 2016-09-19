@@ -1,0 +1,24 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>Hero has a collection of ropes.
+You are given the String <b>s</b> that contains an ASCII art depicting this collection of ropes.
+Each character of <b>s</b> is either '-' (dash, ASCII 45) or '.' (period, ASCII 46).
+Each dash is a rope segment, each period is an empty space.
+Each contiguous segment of dashes represents one rope; the number of dashes is the length of the rope.
+For example, <b>s</b> = "..-..----." means that Hero has two ropes: one of length 1 and one of length 4.
+
+Hero has decided to rearrange his collection of ropes, using the following rules:
+<ul>
+<li>Each rope that has an even length must be placed to the left of all ropes that have odd lengths.</li>
+<li>There must be at least one empty space between any two ropes.</li>
+<li>If there are multiple arrangements that satisfy the previous two rules, Hero will choose the one that corresponds to the lexicographically smallest string. (This is explained below.)</li>
+</ul>
+
+
+Once Hero rearranges his ropes, we can encode their new placement into a new string that looks similar to <b>s</b>.
+(The string will have the same length as <b>s</b> and it will contain the same collection of ropes, but possibly in different places.)
+
+Given two strings of the same length, the lexicographically smaller one is the one that has a character with a smaller ASCII value on the first position on which they differ.
+For example, the string X = "---.-" is lexicographically smaller than the string Y = "-.---" because X[0] = Y[0] and X[1] &lt Y[1].
+(Note that a dash has a smaller ASCII value than a period.)
+
+Construct the arrangement of ropes chosen by Hero and return the String that encodes it.
+</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>Ropestring</td></tr><tr><td>Method:</td><td>makerope</td></tr><tr><td>Parameters:</td><td>String</td></tr><tr><td>Returns:</td><td>String</td></tr><tr><td>Method signature:</td><td>String makerope(String s)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr><tr><td>Stack limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>s</b> will contain between 1 and 50 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each character in <b>s</b> will be either '-' or '.'.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;..-..-&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;-.-...&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;-.-&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;-.-&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;--..-.---..--&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;--.--.---.-..&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;--..-.---..--..-----.--.&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;--.--.--.-----.---.-....&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;...&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;...&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
