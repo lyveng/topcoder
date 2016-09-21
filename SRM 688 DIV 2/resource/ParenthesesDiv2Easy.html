@@ -1,0 +1,32 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>Correct parentheses sequences can be defined recursively as follows:
+<ul>
+<li>The empty string "" is a correct sequence.</li>
+<li>If "X" and "Y" are correct sequences, then "XY" (the concatenation of X and Y) is a correct sequence.</li>
+<li>If "X" is a correct sequence, then "(X)" is a correct sequence.</li>
+<li>Each correct parentheses sequence can be derived using the above rules.</li>
+</ul>
+Examples of correct parentheses sequences include "", "()", "()()()", "(()())", and "(((())))".<br></br>
+<br></br>
+<br></br>
+We can define the depth of a correct parentheses sequence recursively as follows:
+
+<ul>
+<li>The empty string "" has depth 0.</li>
+<li>If the depth of "X" is x and the depth of "Y" is y then the depth of "XY" is max(x,y).</li>
+<li>If the depth of "X" is x then the depth of "(X)" is x+1.</li>
+</ul>
+
+For example, the depth of "(((())))" is 4, the depth of "()()()" is 1, and the depth of "(())()" is 2.<br></br>
+<br></br>
+Note that the depth of each correct parentheses sequence is uniquely defined using the above rules.<br></br>
+For example, when evaluating the depth of "()()()" it does not matter whether we take X = "()" and Y = "()()" or we take X = "()()" and Y = "()", the result will be the same in both cases.
+<br></br>
+<br></br>
+Given a String <b>s</b> that is a correct parentheses sequence, calculate and return the depth of <b>s</b>.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>ParenthesesDiv2Easy</td></tr><tr><td>Method:</td><td>getDepth</td></tr><tr><td>Parameters:</td><td>String</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int getDepth(String s)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr><tr><td>Stack limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>s</b> will contain between 2 and 50 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each character in <b>s</b> will be '(' or ')'.</td></tr><tr><td align="center" valign="top">-</td><td><b>s</b> will be a correct parentheses sequence.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;(())&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: 2</pre></td></tr><tr><td><table><tr><td colspan="2"><ul>
+<li>The depth of "" is 0.</li>
+<li>Therefore, the depth of "()" is 1.</li>
+<li>Next, the depth of "(())" is the depth of "()" plus 1, which makes it 1+1 = 2.</li>
+</ul></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;()()()&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2"><ul>
+<li>The depth of "()()" is the maximum of the depth of "()" and the depth of "()". In other words, it is max(1,1) = 1.</li>
+<li>The depth of "()()()" is the maximum of the depth of "()()" and the depth of "()". Hence, this also equals max(1,1) = 1.</li>
+</ul></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;(())()&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: 2</pre></td></tr><tr><td><table><tr><td colspan="2">The answer is max(2, 1) = 2.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;((())())(((())(()))())&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: 4</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;()&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
