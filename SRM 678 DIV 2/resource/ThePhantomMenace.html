@@ -1,0 +1,39 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>Obi Wan Kenobi and Qui-Gon Jinn are trying to escape from the Federation to find Queen Amidala.
+They are currently trapped inside a building and they have to escape through one of the doors.
+<br></br><br></br>
+All doors are on the same side of the building.
+You are given the coordinate of each door in the int[] <b>doors</b>.
+The doors are protected by some droids.
+Currently, all those droids are standing next to the wall with the doors.
+You are given the coordinates of the droids in the int[] <b>droids</b>.
+<br></br><br></br>
+Our two heroes prefer a door that is as far as possible from all the droids.
+For example, suppose that the doors are at positions { 2, 5, 8 } and that there are two droids: one at position 1 and the other at position 10.
+The optimal door for the escape would be the door at position 5.
+For this door, the two droids are 4 and 5 units of distance away from the door.
+Hence, the closest droid is 4 units of distance away from the door.
+Each of the other two doors is closer than that to one of the droids.
+<br></br><br></br>
+Formally, the safety level of a door is equal to the distance between the door and the droid that is closest to that door.
+Compute the safety levels of all doors and return the maximum of those safety levels.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>ThePhantomMenace</td></tr><tr><td>Method:</td><td>find</td></tr><tr><td>Parameters:</td><td>int[], int[]</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int find(int[] doors, int[] droids)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>The distance between a door at coordinate x and a droid at coordinate y is |x-y|, that is, the absolute value of the difference between x and y.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>doors</b> will contain between 1 and 10 elements.</td></tr><tr><td align="center" valign="top">-</td><td><b>droids</b> will contain between 1 and 10 elements.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>doors</b> will be between 0 and 100 inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>droids</b> will be between 0 and 100 inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>No number will appear more than once in the concatenation of <b>doors</b> and <b>droids</b></td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1,2,3,4}</pre></td></tr><tr><td><pre>{5,6,7,8}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 4</pre></td></tr><tr><td><table><tr><td colspan="2">There are four doors located at {1,2,3,4} and four droids located at {5,6,7,8}.
+The safety level of the door at position 1 can be computed as follows:
+<ul>
+<li>Droid at position 5 is |5-1| = 4 units of distance away from this door.</li>
+<li>Droid at position 6 is |6-1| = 5 units of distance away from this door.</li>
+<li>Droid at position 7 is |7-1| = 6 units of distance away from this door.</li>
+<li>Droid at position 8 is |8-1| = 7 units of distance away from this door.</li>
+<li>Thus, the closest droid to our door is the one at position 5, and the safety level of our door is 4.</li>
+</ul>
+The other three doors have safety levels equal to 3, 2, and 1, respectively.
+Thus, the best choice for the escape is the door at position 1.
+The correct return value (i.e., the largest of all safety levels) is 4.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1}</pre></td></tr><tr><td><pre>{10}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 9</pre></td></tr><tr><td><table><tr><td colspan="2">When there's only one candidate, there's only one choice.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{2,3,5,7,11}</pre></td></tr><tr><td><pre>{1,8,13}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 3</pre></td></tr><tr><td><table><tr><td colspan="2">If you use door at position 2, then you are at distance 1 from droid 1.
+<br></br>
+If you use door at position 3, then you are at distance 2 from droid 1.
+<br></br>
+If you use door at position 5, then you are at distance 3 from droid 2.
+<br></br>
+If you use door at position 7, then you are at distance 1 from droid 2.
+<br></br>
+If you use door at position 11, then you are at distance 2 from droid 3.
+<br></br><br></br>
+So all doors have droids at 3 or less units of distance. If you choose door at position 5 you have droids at distances 4, 3 and 8 so that's the best choice.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1,3,5,7,9,11,13,15,17,19}</pre></td></tr><tr><td><pre>{2,4,6,8,10,12,14,16,18,20}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2">Every door is a possible choice for this test case.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{2,1}</pre></td></tr><tr><td><pre>{4,3}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 2</pre></td></tr><tr><td><table><tr><td colspan="2">Be careful! The input isn't always sorted.</td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
