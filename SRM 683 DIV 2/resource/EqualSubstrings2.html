@@ -1,0 +1,25 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p> You are given a String <b>s</b>.
+Compute and return the number of ways in which we can choose two identical non-overlapping substrings of <b>s</b>.
+</p>
+
+<p>
+(The two substrings must be non-empty.
+Each substring must be contiguous.)
+</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>EqualSubstrings2</td></tr><tr><td>Method:</td><td>get</td></tr><tr><td>Parameters:</td><td>String</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int get(String s)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr><tr><td>Stack limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>s</b> will consist only of lowercase English letters ('a'-'z').</td></tr><tr><td align="center" valign="top">-</td><td>The length of <b>s</b> will be between 1 and 50, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;aa&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2">There is exactly one way how to choose two non-empty and non-overlapping substrings.
+In this case they happen to be equal (both are "a"), so the correct return value is 1.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;abcd&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0</pre></td></tr><tr><td><table><tr><td colspan="2">Regardless how we choose two non-overlapping substrings, they will always differ.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;aba&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2">One pair: ("a", "a").</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;abab&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: 3</pre></td></tr><tr><td><table><tr><td colspan="2">Three pairs: ("a", "a"), ("b", "b"), ("ab", "ab").</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;aaaab&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: 7</pre></td></tr><tr><td><table><tr><td colspan="2">The 7 ways to select the two equal substrings are shown below.
+Each row represents one way.
+The characters 1 and 2 denote characters selected to form the first and second substring, respectively.
+
+<pre>
+aaaab
+-----
+12...
+1.2..
+1..2.
+.12..
+.1.2.
+..12.
+1122.
+</pre>
+
+(In the first six ways, the two selected substrings are "a" and "a". In the last way the selected substrings are "aa" and "aa".)</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;onetwothreeonetwothree&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: 86</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
