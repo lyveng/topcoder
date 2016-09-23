@@ -1,0 +1,30 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>
+Today, a large live concert is going to take place.
+Some interprets (called "idols") are going to perform at the concert.
+Different idols have different names.
+</p><p>
+There are M distinct songs that can be included in the concert.
+The songs are numbered 0 through M-1.
+Song i can only be performed by the idol <b>s</b>[i].
+Including this song in the concert will increase the happiness of the audience by <b>h</b>[i].
+</p><p>
+We have to choose the set list for this concert.
+Our goal is to make the audience as happy as possible.
+However, the concert time is limited and therefore each idol can only perform at most one song.
+</p><p>
+You are given the int[] <b>h</b> and the String[] <b>s</b> with M elements each.
+Find the set of songs that should be played at the concert.
+The set of songs must have the following properties:
+<ul>
+<li>Each idol will perform at most one song.</li>
+<li>After hearing the songs, the happiness of the audience will increase by the largest amount possible.</li>
+</ul>
+Return the largest possible amount of happiness the audience can gain.
+</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>LiveConcert</td></tr><tr><td>Method:</td><td>maxHappiness</td></tr><tr><td>Parameters:</td><td>int[], String[]</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int maxHappiness(int[] h, String[] s)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr><tr><td>Stack limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>The value M is not given explicitly. You can determine M as the length of <b>h</b>.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td>M will be between 1 and 100, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>h</b> and <b>s</b> will contain exactly M elements each.</td></tr><tr><td align="center" valign="top">-</td><td>All numbers in <b>h</b> will be between 1 and 100, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>All strings in <b>s</b> will have between 1 and 10 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>For each valid i, each character in <b>s</b>[i] will be a lowercase letter ('a'-'z').</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{10,5,6,7,1,2}</pre></td></tr><tr><td><pre>{&quot;ciel&quot;,&quot;bessie&quot;,&quot;john&quot;,&quot;bessie&quot;,&quot;bessie&quot;,&quot;john&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 23</pre></td></tr><tr><td><table><tr><td colspan="2">The optimal concert will contain three songs:
+<ul>
+<li>"ciel" will sing the song number 0, which will give the audience 10 happiness</li>
+<li>"bessie" will sing the song number 3, which will give the audience 7 happiness</li>
+<li>"john" will sing the song number 2, which will give the audience 6 happiness</li>
+</ul>
+The total amount of happiness will be 10+7+6 = 23.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{3,3,4,3,3}</pre></td></tr><tr><td><pre>{&quot;a&quot;,&quot;a&quot;,&quot;a&quot;,&quot;a&quot;,&quot;a&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 4</pre></td></tr><tr><td><table><tr><td colspan="2">There is a single idol, thus the concert will consist of a single song.
+The optimal choice is the song that gives 4 happiness.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1,2,3,4,5,6,7,8,9,10,100}</pre></td></tr><tr><td><pre>{&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;,&quot;e&quot;,&quot;d&quot;,&quot;c&quot;,&quot;b&quot;,&quot;a&quot;,&quot;abcde&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 140</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{100}</pre></td></tr><tr><td><pre>{&quot;oyusop&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 100</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{100,100,100,100,100,100,100,100,100,100,100,100,100}</pre></td></tr><tr><td><pre>{&quot;haruka&quot;,&quot;chihaya&quot;,&quot;yayoi&quot;,&quot;iori&quot;,&quot;yukiho&quot;,&quot;makoto&quot;,&quot;ami&quot;,&quot;mami&quot;,&quot;azusa&quot;,&quot;miki&quot;,&quot;hibiki&quot;,&quot;takane&quot;,&quot;ritsuko&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1300</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
