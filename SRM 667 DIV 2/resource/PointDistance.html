@@ -1,0 +1,26 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>
+You are given two distinct points A and B in the two-dimensional plane.
+Your task is to find any point C with the following properties:
+<ul>
+<li>C is different from A and B.</li>
+<li>Each coordinate of C is an integer between -100 and 100, inclusive.</li>
+<li>The distance between A and C is strictly greater than the distance between B and C.</li>
+</ul>
+</p>
+
+<p>
+You are given four ints: <b>x1</b>, <b>y1</b>, <b>x2</b>, and <b>y2</b>.
+Point A has coordinates (<b>x1</b>,<b>y1</b>) and point B has coordinates (<b>x2</b>,<b>y2</b>).
+Find the coordinates (x3,y3) of one possible point C with the above properties.
+Return these coordinates as a int[] with two elements: element 0 is x3 and element 1 is y3.
+In other words, return the int[] {x3,y3}.
+</p>
+
+<p>
+For the constraints given below it is guaranteed that a valid point C always exists.
+If there are multiple solutions, return any of them.
+</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>PointDistance</td></tr><tr><td>Method:</td><td>findPoint</td></tr><tr><td>Parameters:</td><td>int, int, int, int</td></tr><tr><td>Returns:</td><td>int[]</td></tr><tr><td>Method signature:</td><td>int[] findPoint(int x1, int y1, int x2, int y2)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr><tr><td>Stack limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>In this problem we consider the standard Euclidean distance. Formally, the distance between points (xi,yi) and (xj,yj) is defined as sqrt( (xi-xj)^2 + (yi-yj)^2 ).</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>x1,y1,x2,y2</b> will be between -50 and 50, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>(x1,y1)</b> will be different from <b>(x2,y2)</b>.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>-1</pre></td></tr><tr><td><pre>0</pre></td></tr><tr><td><pre>1</pre></td></tr><tr><td><pre>0</pre></td></tr></table></td></tr><tr><td><pre>Returns: {8, 48 }</pre></td></tr><tr><td><table><tr><td colspan="2">In this example, point A is at (-1,0) and point B is at (1,0).
+Almost any point with a positive x-coordinate will be a valid answer.
+For example, your program can also return {100,100}, {2,0}, or {9,-100}.
+Note that you cannot return {1,0} because point C must not be the same as point B.
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>1</pre></td></tr><tr><td><pre>1</pre></td></tr><tr><td><pre>-1</pre></td></tr><tr><td><pre>-1</pre></td></tr></table></td></tr><tr><td><pre>Returns: {25, -63 }</pre></td></tr><tr><td><table><tr><td colspan="2">(x1,y1) is (1,1) and (x2,y2) is (-1,-1).</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>0</pre></td></tr><tr><td><pre>1</pre></td></tr><tr><td><pre>2</pre></td></tr><tr><td><pre>3</pre></td></tr></table></td></tr><tr><td><pre>Returns: {41, 65 }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>5</pre></td></tr><tr><td><pre>-4</pre></td></tr><tr><td><pre>-2</pre></td></tr><tr><td><pre>5</pre></td></tr></table></td></tr><tr><td><pre>Returns: {68, 70 }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>-50</pre></td></tr><tr><td><pre>-50</pre></td></tr><tr><td><pre>50</pre></td></tr><tr><td><pre>-50</pre></td></tr></table></td></tr><tr><td><pre>Returns: {67, 4 }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>-50</pre></td></tr><tr><td><pre>50</pre></td></tr><tr><td><pre>-49</pre></td></tr><tr><td><pre>49</pre></td></tr></table></td></tr><tr><td><pre>Returns: {73, -25 }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
