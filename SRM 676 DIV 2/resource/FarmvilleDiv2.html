@@ -1,0 +1,35 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>
+Farmer John recently found out about a popular online farming game.
+</p>
+
+<p>
+There are n types of plants in the game.
+The types are numbered 0 through n-1.
+At the beginning of the game, Farmer John is given one seed of each plant type.
+</p>
+
+<p>
+There is a single plot of land.
+At any time the plot can only contain at most one plant.
+Whenever the plot is empty, Farmer John can plant one of the seeds.
+Once a seed of type i is planted, it takes <b>time</b>[i] seconds until it grows into a fully developed plant.
+When that happens, Farmer John will harvest the plant and the plot will become empty again.
+Planting a seed and harvesting a plant happens instanteously.
+</p>
+
+<p>
+Farmer John also has <b>budget</b> coins.
+He can spend these coins to make his plants grow faster.
+For each i, Farmer John may pay <b>cost</b>[i] coins to reduce <b>time</b>[i] by 1.
+Farmer John may pay for the same plant multiple times, each time decreasing its growing time by 1.
+Obviously, the growing time cannot be reduced below 0.
+</p>
+
+<p>
+You are given the int[]s <b>time</b> and <b>cost</b> with n elements each, and the int <b>budget</b>.
+Determine and return the minimum amount of time in which Farmer John can grow a single plant of each type.
+</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>FarmvilleDiv2</td></tr><tr><td>Method:</td><td>minTime</td></tr><tr><td>Parameters:</td><td>int[], int[], int</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int minTime(int[] time, int[] cost, int budget)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr><tr><td>Stack limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>The value of n is not given as a separate argument. Instead, you can determine it as the number of elements in <b>time</b>.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td>n will be between 1 and 50, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>time,cost</b> will have exactly n elements.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>time,cost</b> will be between 1 and 100, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>budget</b> will be between 1 and 5,000, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{100}</pre></td></tr><tr><td><pre>{1}</pre></td></tr><tr><td><pre>26</pre></td></tr></table></td></tr><tr><td><pre>Returns: 74</pre></td></tr><tr><td><table><tr><td colspan="2">In this case, we have a single plant that takes 100 seconds to grow. We can reduce the time it takes to grow by 1 second at a cost of 1 coin. Since we have 26 coins, we can use all our coins to reduce the time it takes the plant to grow to only 74 seconds.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{100}</pre></td></tr><tr><td><pre>{1}</pre></td></tr><tr><td><pre>101</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{2,1}</pre></td></tr><tr><td><pre>{1,1}</pre></td></tr><tr><td><pre>3</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0</pre></td></tr><tr><td><table><tr><td colspan="2">Here we have two plants.
+Without payments, plant 0 will grow in 2 seconds and plant 1 will grow in 1 second.
+We have a budget of 3 coins.
+We can pay 1+1 to decrease the growing time of plant 0 from 2 to 0.
+We can then pay 1 to decrease the growing time of plant 1 from 1 to 0.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1,2,3,4,5}</pre></td></tr><tr><td><pre>{5,4,3,2,1}</pre></td></tr><tr><td><pre>15</pre></td></tr></table></td></tr><tr><td><pre>Returns: 6</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{100,100,100,100,100,100,100,100,100,100}</pre></td></tr><tr><td><pre>{2,4,6,8,10,1,3,5,7,9}</pre></td></tr><tr><td><pre>5000</pre></td></tr></table></td></tr><tr><td><pre>Returns: 50</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{30,40,20,10}</pre></td></tr><tr><td><pre>{10,20,30,40}</pre></td></tr><tr><td><pre>5</pre></td></tr></table></td></tr><tr><td><pre>Returns: 100</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
