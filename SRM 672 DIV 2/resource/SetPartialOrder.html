@@ -1,0 +1,25 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>In math, we sometimes define a <i>partial order</i> on some objects.
+In this problem we will take a look at one possible way how to define a partial order on sets of integers.</p>
+
+<p>Consider two sets of integers: X and Y.
+These two sets can be related to each other in four possible ways:</p>
+
+<ul>
+<li>X is <i>equal to</i> Y if each element of X is also an element of Y and vice versa.</li>
+<li>X is <i>less than</i> Y if X is not equal to Y (see previous item) and each element of X is also an element of Y.</li>
+<li>X is <i>greater than</i> Y if Y is less than X.</li>
+<li>In all other cases X and Y are <i>incomparable</i>.</li>
+</ul>
+
+<p>In other words:
+X is less than Y if and only if X is a proper subset of Y.
+Two sets are incomparable if neither is a subset of the other.</p>
+
+<p>You are given two int[]s <b>a</b> and <b>b</b>.
+The elements of <b>a</b> form the set X.
+The elements of <b>b</b> form the set Y.
+Compare X to Y and return the correct one of the following four strings: "EQUAL", "LESS", "GREATER", or "INCOMPARABLE".</p>
+
+<p>(The string "LESS" means that X is less than Y, the string "GREATER" means that X is greater than Y.
+Quotes are for clarity only.
+Note that the return value is case-sensitive.)</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>SetPartialOrder</td></tr><tr><td>Method:</td><td>compareSets</td></tr><tr><td>Parameters:</td><td>int[], int[]</td></tr><tr><td>Returns:</td><td>String</td></tr><tr><td>Method signature:</td><td>String compareSets(int[] a, int[] b)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr><tr><td>Stack limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td>Each of arrays <b>a</b> and <b>b</b> will have length between 1 and 50, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of arrays <b>a</b> and <b>b</b> will be between 1 and 100, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>In each of arrays <b>a</b> and <b>b</b> all elements are distinct.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1, 2, 3, 5, 8}</pre></td></tr><tr><td><pre>{8, 5, 1, 3, 2}</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;EQUAL&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">The order of elements in <b>a</b> and <b>b</b> does not matter. The two sets X and Y are equal.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{2, 3, 5, 7}</pre></td></tr><tr><td><pre>{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;LESS&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">Each number that occurs in <b>a</b> does also occur in <b>b</b>.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{2, 4, 6, 8, 10, 12, 14, 16}</pre></td></tr><tr><td><pre>{2, 4, 8, 16}</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;GREATER&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{42, 23, 17}</pre></td></tr><tr><td><pre>{15, 23, 31}</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;INCOMPARABLE&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
