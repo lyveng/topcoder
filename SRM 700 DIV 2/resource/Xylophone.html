@@ -1,0 +1,28 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>
+A xylophone is a musical instrument that consists of a sequence of wooden bars.
+In order to make a sound, you have to strike one of the bars by a mallet.
+</p>
+
+<p>
+For the purpose of this problem we will assume that our xylophone has exactly 50 bars.
+The bars are numbered from 1 to 50 in the order from the left to the right.
+</p>
+
+<p>
+There are 7 notes: A, B, C, D, E, F, G.
+Each bar of our xylophone plays one of these notes.
+The notes repeat periodically.
+When you play the bars from the left to the right, you will hear the following sequence of notes:
+A,B,C,D,E,F,G,A,B,C,D,E,F,G,A,B,C,...
+</p>
+
+<p>
+In other words: bar 1 produces the note A, bar 2 plays B, bar 3 plays C, ..., bar 7 plays G, and then the sequence of notes starts repeating: bar 8 plays the note A again, bar 9 is B, and so on.
+</p>
+
+<p>
+You have hit a sequence of bars.
+You are given their numbers in the int[] <b>keys</b>.
+Return the number of <i>distinct</i> notes you've hit.
+</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>Xylophone</td></tr><tr><td>Method:</td><td>countKeys</td></tr><tr><td>Parameters:</td><td>int[]</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int countKeys(int[] keys)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr><tr><td>Stack limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>keys</b> will contain between 1 and 50 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>keys</b> will be between 1 and 50, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1,8,3}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 2</pre></td></tr><tr><td><table><tr><td colspan="2">If you hit the keys 1,8,3, you have played the notes A,A,C.
+This means you have hit two <i>distinct</i> notes: A and C.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{7,3,2,4,1,5,6}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 7</pre></td></tr><tr><td><table><tr><td colspan="2">In this case you have played 7 distinct notes, each of them exactly once.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1,8,15}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2">Although these are all distinct keys, these keys all have the same note, so they are counted as one.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{25,1,17,9,8}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 4</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{11,11,11,11,11,11,11,11,11,11,11}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{50,10,20,30,11,30,24,38,5,2,9}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 6</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
