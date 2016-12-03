@@ -1,0 +1,94 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>
+You have a rectangular board that is placed vertically.
+The board is divided into a grid of unit square cells.
+Some grid cells contain obstacles and some cells contain a grain of sand.
+All other cells are currently empty.
+</p>
+
+<p>
+You are given the description of the board as a <b>String[]</b> board.
+The elements of <b>board</b> correspond to rows of the grid in the order from top to bottom.
+(E.g., <b>board</b>[0] represents the topmost row of cells.)
+Each character in each element of <b>board</b> represents one cell.
+The character 'x' represents a cell with an obstacle, 'o' is a grain of sand, and '.' (period) is an empty cell.
+</p>
+
+<p>
+You would like to implement a simulation of falling sand.
+The rules are as follows:
+<ul>
+<li>The obstacles don't move.</li>
+<li>Whenever there is an empty cell immediately below a grain of sand, the grain of sand moves into the empty cell.</li>
+</ul>
+</p>
+
+<p>
+Return the final configuration of the board after all grains of sand reach their final locations.
+</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>FallingSand</td></tr><tr><td>Method:</td><td>simulate</td></tr><tr><td>Parameters:</td><td>String[]</td></tr><tr><td>Returns:</td><td>String[]</td></tr><tr><td>Method signature:</td><td>String[] simulate(String[] board)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr><tr><td>Stack limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>board</b> will contain between 1 and 50 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>board</b> will have length between 1 and 50, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>All elements of <b>board</b> will have the same length.</td></tr><tr><td align="center" valign="top">-</td><td>Each character in each element of <b>board</b> will be one of 'x', 'o', and '.'.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;ooooo&quot;,
+ &quot;..x..&quot;,
+ &quot;....x&quot;,
+ &quot;.....&quot;,
+ &quot;....o&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: {&quot;..o..&quot;, &quot;..x.o&quot;, &quot;....x&quot;, &quot;.....&quot;, &quot;oo.oo&quot; }</pre></td></tr><tr><td><table><tr><td colspan="2"><p>
+The return value is:
+</p>
+
+<pre>
+{"..o..", 
+ "..x.o", 
+ "....x", 
+ ".....", 
+ "oo.oo" }
+</pre></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;..o..&quot;, 
+ &quot;..x.o&quot;, 
+ &quot;....x&quot;, 
+ &quot;.....&quot;, 
+ &quot;oo.oo&quot; }</pre></td></tr></table></td></tr><tr><td><pre>Returns: {&quot;..o..&quot;, &quot;..x.o&quot;, &quot;....x&quot;, &quot;.....&quot;, &quot;oo.oo&quot; }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;ooooxooo.ooxo.oxoxoooox.....x.oo&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: {&quot;ooooxooo.ooxo.oxoxoooox.....x.oo&quot; }</pre></td></tr><tr><td><table><tr><td colspan="2">Nothing changes in this case, since all the sand is already at the bottom of the grid. </td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;o&quot;,
+ &quot;.&quot;,
+ &quot;o&quot;,
+ &quot;.&quot;,
+ &quot;o&quot;,
+ &quot;.&quot;,
+ &quot;.&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: {&quot;.&quot;, &quot;.&quot;, &quot;.&quot;, &quot;.&quot;, &quot;o&quot;, &quot;o&quot;, &quot;o&quot; }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;oxxxxooo&quot;,
+ &quot;xooooxxx&quot;,
+ &quot;..xx.ooo&quot;,
+ &quot;oooox.o.&quot;,
+ &quot;..x.....&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: {&quot;oxxxxooo&quot;, &quot;x.oo.xxx&quot;, &quot;..xxo...&quot;, &quot;.oo.x.o.&quot;, &quot;ooxo.ooo&quot; }</pre></td></tr><tr><td><table><tr><td colspan="2"><p>
+Note the final configuration of sand in the second column from the right.
+</p>
+
+<pre>
+{"oxxxxooo", 
+ "x.oo.xxx", 
+ "..xxo...", 
+ ".oo.x.o.", 
+ "ooxo.ooo"}
+</pre></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;..o..o..o..o..o..o..o..o..o..o..o&quot;,
+ &quot;o..o..o..o..o..o..o..o..o..o..o..&quot;,
+ &quot;.o..o..o..o..o..o..o..o..o..o..o.&quot;,
+ &quot;...xxx...xxx...xxxxxxxxx...xxx...&quot;,
+ &quot;...xxx...xxx...xxxxxxxxx...xxx...&quot;,
+ &quot;...xxx...xxx......xxx......xxx...&quot;,
+ &quot;...xxxxxxxxx......xxx......xxx...&quot;,
+ &quot;...xxxxxxxxx......xxx......xxx...&quot;,
+ &quot;...xxxxxxxxx......xxx......xxx...&quot;,
+ &quot;...xxx...xxx......xxx............&quot;,
+ &quot;...xxx...xxx...xxxxxxxxx...xxx...&quot;,
+ &quot;...xxx...xxx...xxxxxxxxx...xxx...&quot;,
+ &quot;..o..o..o..o..o..o..o..o..o..o..o&quot;,
+ &quot;o..o..o..o..o..o..o..o..o..o..o..&quot;,
+ &quot;.o..o..o..o..o..o..o..o..o..o..o.&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 
+{&quot;.................................&quot;,
+ &quot;.................................&quot;,
+ &quot;...ooo...ooo...ooooooooo...ooo...&quot;,
+ &quot;...xxx...xxx...xxxxxxxxx...xxx...&quot;,
+ &quot;...xxx...xxx...xxxxxxxxx...xxx...&quot;,
+ &quot;...xxxoooxxx......xxx......xxx...&quot;,
+ &quot;...xxxxxxxxx......xxx......xxx...&quot;,
+ &quot;...xxxxxxxxx......xxx......xxx...&quot;,
+ &quot;...xxxxxxxxx......xxx......xxx...&quot;,
+ &quot;...xxx...xxx......xxx............&quot;,
+ &quot;...xxx...xxx...xxxxxxxxx...xxx...&quot;,
+ &quot;...xxx...xxx...xxxxxxxxx...xxx...&quot;,
+ &quot;.................................&quot;,
+ &quot;ooo.........ooo.........ooo...ooo&quot;,
+ &quot;ooooooooooooooooooooooooooooooooo&quot; }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
