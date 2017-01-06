@@ -1,0 +1,37 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>Hero has just constructed a very specific graph.
+He started with n isolated vertices, labeled 0 through n-1.
+For each vertex i Hero then chose a vertex <b>a</b>[i] (other than i) and he added an edge that connected i and <b>a</b>[i].
+This way he created a graph with n vertices and n edges.
+Note that if <b>a</b>[x]=y and <b>a</b>[y]=x, the vertices x and y were connected by two different edges.
+
+Hero now wants to perform the following procedure:
+<ol>
+<li>Add a new isolated vertex number n.</li>
+<li>Choose a subset M of the original vertices.</li>
+<li>For each x in M, erase an edge between vertices x and <b>a</b>[x].</li>
+<li>For each x in M, add a new edge between vertices x and n.</li>
+</ol>
+
+Hero's goal is to create a final graph in which the vertices 0 through n-1 are all in the same connected component.
+(I.e., there must be a way to reach any of these vertices from any other of them by following one or more consecutive edges, possibly visiting vertex n along the way.)
+Note that Hero does not care whether vertex n is in the same component as the other vertices: both possibilities are fine.
+
+In step 2 of the above procedure Hero has 2^n possible subsets to choose from.
+A choice of M is good if it produces a graph with the desired property.
+Count how many of the 2^n possibilities are good choices.
+Return that count as a long.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>Sunnygraphs2</td></tr><tr><td>Method:</td><td>count</td></tr><tr><td>Parameters:</td><td>int[]</td></tr><tr><td>Returns:</td><td>long</td></tr><tr><td>Method signature:</td><td>long count(int[] a)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr><tr><td>Stack limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>a</b> will contain n elements.</td></tr><tr><td align="center" valign="top">-</td><td>n will be between 2 and 50, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element in <b>a</b> will be between 0 and n - 1, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>For each i between 0 and n - 1 holds <b>a</b>[i] != i.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1,0}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 4</pre></td></tr><tr><td><table><tr><td colspan="2">The original graph contained the vertices 0 and 1.
+This pair of vertices was connected by two edges.
+
+Next, Hero added a new vertex 2.
+Then he had to choose one of four possible subsets M:
+<ul>
+<li>If he chose M = {}, the resulting graph contained the edges 0-1 and 0-1. The vertices 0 and 1 were in the same component.</li>
+<li>If he chose M = {0}, the resulting graph contained the edges 0-1 and 0-2. The vertices 0 and 1 were in the same component.</li>
+<li>If he chose M = {1}, the resulting graph contained the edges 0-1 and 1-2. The vertices 0 and 1 were in the same component.</li>
+<li>Finally, if he chose M = {0, 1}, the resulting graph contained the edges 0-2 and 1-2. And again, the vertices 0 and 1 were in the same component. (In the resulting graph we can still go from vertex 0 to vertex 1, even though we have to go via vertex 2.)</li>
+</ul>
+
+As all four choices of M are good, the correct answer is 4.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1,0,0}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 7</pre></td></tr><tr><td><table><tr><td colspan="2">Here, M = {2} is not a good choice.
+This choice produces a graph with edges 0-1, 0-1, and 2-3.
+In this graph vertex 2 is not in the same component as vertices 0 and 1.
+The other seven possible choices of M are all good.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{2,3,0,1}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 9</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{2,3,0,1,0}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 18</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{2,3,0,1,0,4,5,2,3}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 288</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{29,34,40,17,16,12,0,40,20,35,5,13,27,7,29,13,14,39,42,9,30,38,27,40,34,33,42,20,29,42,12,29,30,21,4,5,7,25,24,17,39,32,9}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 6184752906240</pre></td></tr><tr><td><table><tr><td colspan="2">"Watch out for integer overflow."</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">6)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{9,2,0,43,12,14,39,25,24,3,16,17,22,0,6,21,18,29,34,35,23,43,28,28,20,11,5,12,31,24,8,13,17,10,15,9,15,26,4,13,21,27,36,39}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 17317308137473</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
