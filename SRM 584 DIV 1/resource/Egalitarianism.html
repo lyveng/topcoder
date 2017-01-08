@@ -1,0 +1,42 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>A kingdom has <i>n</i> citizens. Each one has some amount of money, a number of dollars denoted by a non-negative integer.
+<br></br><br></br>
+Citizens are numbered from 0 to <i>n</i>-1. Some citizens have friends. Their friendship network is described by a String[] called <b>isFriend</b>, such that if <b>isFriend</b>[i][j] == 'Y', the citizens numbered <i>i</i> and <i>j</i> are friends, and if <b>isFriend</b>[i][j] == 'N', these citizens are not friends.
+<br></br><br></br>
+The king decrees the following:
+<br></br><br></br>
+Each citizen's amount of money must be within <b>d</b> dollars of the amount of money belonging to any of his friends. In other words, a citizen with <i>x</i> dollars must not have any friends with less than <i>x</i>-<b>d</b> dollars or more than <i>x</i>+<b>d</b> dollars.
+<br></br><br></br>
+Given the number of citizens and their friendship network, what is the greatest possible money difference between any two people (not necessarily friends) in this kingdom? If there is a finite answer, return it. Otherwise, return -1.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>Egalitarianism</td></tr><tr><td>Method:</td><td>maxDifference</td></tr><tr><td>Parameters:</td><td>String[], int</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int maxDifference(String[] isFriend, int d)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>64</td></tr></table></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td>n will be between 2 and 50, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>d</b> will be between 0 and 1,000, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>isFriend</b> will contain exactly n elements.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>isFriend</b> will contain exactly <i>n</i> characters, each of which is either 'Y' or 'N'.</td></tr><tr><td align="center" valign="top">-</td><td>For any i, <b>isFriend</b>[i][i] = 'N'.</td></tr><tr><td align="center" valign="top">-</td><td>For any i and j, <b>isFriend</b>[i][j] = <b>isFriend</b>[j][i].</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;NYN&quot;,
+ &quot;YNY&quot;,
+ &quot;NYN&quot;}</pre></td></tr><tr><td><pre>10</pre></td></tr></table></td></tr><tr><td><pre>Returns: 20</pre></td></tr><tr><td><table><tr><td colspan="2">The kingdom has three citizens. Citizens 0 and 1 are friends. Also, citizens 1 and 2 are friends. The greatest possible money difference between any two citizens is $20, as in the following configuration: citizen 0 has $100; citizen 1 has $110; citizen 2 has $120.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;NN&quot;,
+ &quot;NN&quot;}</pre></td></tr><tr><td><pre>1</pre></td></tr></table></td></tr><tr><td><pre>Returns: -1</pre></td></tr><tr><td><table><tr><td colspan="2">Since citizens 0 and 1 are not friends, there are no constraints between them.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;NNYNNN&quot;,
+ &quot;NNYNNN&quot;,
+ &quot;YYNYNN&quot;,
+ &quot;NNYNYY&quot;,
+ &quot;NNNYNN&quot;,
+ &quot;NNNYNN&quot;}</pre></td></tr><tr><td><pre>1000</pre></td></tr></table></td></tr><tr><td><pre>Returns: 3000</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;NNYN&quot;,
+ &quot;NNNY&quot;,
+ &quot;YNNN&quot;,
+ &quot;NYNN&quot;}</pre></td></tr><tr><td><pre>584</pre></td></tr></table></td></tr><tr><td><pre>Returns: -1</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;NYNYYYN&quot;,
+ &quot;YNNYYYN&quot;,
+ &quot;NNNNYNN&quot;,
+ &quot;YYNNYYN&quot;,
+ &quot;YYYYNNN&quot;,
+ &quot;YYNYNNY&quot;,
+ &quot;NNNNNYN&quot;}</pre></td></tr><tr><td><pre>5</pre></td></tr></table></td></tr><tr><td><pre>Returns: 20</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;NYYNNNNYYYYNNNN&quot;,
+ &quot;YNNNYNNNNNNYYNN&quot;,
+ &quot;YNNYNYNNNNYNNNN&quot;,
+ &quot;NNYNNYNNNNNNNNN&quot;,
+ &quot;NYNNNNYNNYNNNNN&quot;,
+ &quot;NNYYNNYNNYNNNYN&quot;,
+ &quot;NNNNYYNNYNNNNNN&quot;,
+ &quot;YNNNNNNNNNYNNNN&quot;,
+ &quot;YNNNNNYNNNNNYNN&quot;,
+ &quot;YNNNYYNNNNNNNNY&quot;,
+ &quot;YNYNNNNYNNNNNNN&quot;,
+ &quot;NYNNNNNNNNNNNNY&quot;,
+ &quot;NYNNNNNNYNNNNYN&quot;,
+ &quot;NNNNNYNNNNNNYNN&quot;,
+ &quot;NNNNNNNNNYNYNNN&quot;}
+</pre></td></tr><tr><td><pre>747</pre></td></tr></table></td></tr><tr><td><pre>Returns: 2988</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">6)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;NY&quot;,
+ &quot;YN&quot;}</pre></td></tr><tr><td><pre>0</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
